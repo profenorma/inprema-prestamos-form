@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPS-01-F02 - Página 2</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a href="index.html" class="btn-nav">⬅️ Volver a Página 1</a>
+    <button class="btn-print" onclick="window.print()">🖨️ Imprimir Página 2</button>
+  </div>
+
+  <div class="page">
+    
+    <!-- Consistent Header Layout -->
+    <table class="header-table">
+      <tr>
+        <td class="col-logo">
+          <img class="logo-img" src="https://images.seeklogo.com/logo-png/20/1/inprema-logo-png_seeklogo-208592.png" alt="INPREMA Logo">
+        </td>
+        <td class="col-center">
+          <h1>INSTITUTO NACIONAL DE PREVISIÓN DEL MAGISTERIO</h1>
+          <h2>SOLICITUD DE PENSIÓN POR VEJEZ</h2>
+        </td>
+        <td class="col-right">
+          OPS-01-F02
+        </td>
+      </tr>
+    </table>
+
+    <div class="dotted-divider"></div>
+
+    <br>
+
+    <!-- Petition Closing Text -->
+    <p class="body-text">
+      A los señores miembros de la Comisión Interventora, muy respetuosamente pido: Admitir la presente solicitud con los documentos acompañados, darle el trámite de ley correspondiente y en definitiva resolver conforme a derecho.
+    </p>
+
+    <br>
+
+    <!-- Clean Editable Date Line -->
+    <p class="body-text">
+      <input type="text" class="blank-field" id="lugar" placeholder="Tegucigalpa M.D.C." style="width: 190px;">, <input type="text" class="blank-field" id="dia" placeholder="lunes 26" style="width: 70px;"> de <input type="text" class="blank-field" id="mes" placeholder="septiembre" style="width: 110px;"> de <input type="text" class="blank-field" id="anio" placeholder="2026" style="width: 60px;">
+    </p>
+
+    <br><br><br>
+
+    <!-- Signature Block -->
+    <div style="text-align: center; margin-bottom: 30px;">
+      <input type="text" class="blank-field" id="nombreDocenteFirma" style="width: 420px; text-align: center;">
+    </div>
+
+    <!-- Combined Form Table -->
+    <table class="contact-form-table">
+      <thead>
+        <tr>
+          <th colspan="2">Datos de contacto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="label-col">Teléfono fijo 1</td>
+          <td class="input-col"><input type="text" class="table-input" id="telFijo1"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Teléfono fijo 2</td>
+          <td class="input-col"><input type="text" class="table-input" id="telFijo2"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Teléfono celular 1</td>
+          <td class="input-col"><input type="text" class="table-input" id="telCelular1"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Teléfono celular 2</td>
+          <td class="input-col"><input type="text" class="table-input" id="telCelular2"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Correo electrónico</td>
+          <td class="input-col"><input type="text" class="table-input" id="correoElec"></td>
+        </tr>
+        <tr>
+          <th colspan="2">Datos familiar cercano o contacto de referencia</th>
+        </tr>
+        <tr>
+          <td class="label-col">Nombre</td>
+          <td class="input-col"><input type="text" class="table-input" id="refNombre"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Parentesco</td>
+          <td class="input-col"><input type="text" class="table-input" id="refParentesco"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Teléfono fijo</td>
+          <td class="input-col"><input type="text" class="table-input" id="refTelFijo"></td>
+        </tr>
+        <tr>
+          <td class="label-col">Teléfono celular</td>
+          <td class="input-col"><input type="text" class="table-input" id="refTelCelular"></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

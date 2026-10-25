@@ -1,0 +1,238 @@
+﻿* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.4;
+  color: #000;
+  background-color: #e5e5e5;
+  padding: 20px 0;
+}
+
+.toolbar {
+  max-width: 8.5in;
+  margin: 0 auto 15px auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-nav, .btn-print {
+  background-color: #2b3a4a;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  font-size: 10pt;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-nav:hover, .btn-print:hover {
+  background-color: #1a252f;
+}
+
+.page {
+  width: 8.5in;
+  min-height: 11in;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 0.6in 0.8in;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+/* Header Table: 100% Consistent across all pages */
+.header-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+}
+
+.header-table td {
+  padding: 2px 6px;
+}
+
+.col-logo {
+  width: 20%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.logo-img {
+  max-height: 42px;
+  width: auto;
+}
+
+.col-center {
+  width: 60%;
+  text-align: center;
+  border-left: 1.5px solid #000;
+  border-right: 1.5px solid #000;
+  padding: 0 10px;
+  vertical-align: middle;
+}
+
+.col-center h1 {
+  font-size: 9.5pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin-bottom: 2px;
+}
+
+.col-center h2 {
+  font-size: 9.5pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.col-right {
+  width: 20%;
+  text-align: right;
+  font-weight: bold;
+  font-size: 9.5pt;
+  vertical-align: top;
+  padding-top: 2px;
+}
+
+.dotted-divider {
+  border-top: 1.5px dotted #000;
+  margin: 6px 0 16px 0;
+}
+
+.sub-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 10pt;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+
+.recipient-block {
+  margin-bottom: 16px;
+  font-size: 9.5pt;
+  line-height: 1.35;
+}
+
+.recipient-block strong {
+  display: block;
+}
+
+p.body-text {
+  text-align: left;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* Inline Fill-in Inputs */
+.blank-field {
+  display: inline-block;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9.5pt;
+  color: #000;
+  font-weight: 600;
+  padding: 0 3px;
+  background: transparent;
+  vertical-align: baseline;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 9.5pt;
+  text-decoration: underline;
+  margin: 16px 0 10px 0;
+  text-transform: uppercase;
+}
+
+ol.hechos-list {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+ol.hechos-list li {
+  text-align: left;
+  margin-bottom: 8px;
+  padding-left: 4px;
+  line-height: 1.35;
+}
+
+/* Vertical Form Table Matching Page 2 Scan */
+.contact-form-table {
+  width: 68%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.contact-form-table th {
+  background-color: #666;
+  color: #fff;
+  font-weight: bold;
+  font-size: 9pt;
+  text-align: left;
+  padding: 4px 8px;
+  border: 1px solid #000;
+}
+
+.contact-form-table td {
+  border: 1px solid #000;
+  padding: 3px 6px;
+  font-size: 9pt;
+  vertical-align: middle;
+}
+
+.contact-form-table td.label-col {
+  width: 42%;
+  font-weight: normal;
+  background-color: #fff;
+}
+
+.contact-form-table td.input-col {
+  width: 58%;
+  background-color: #fff;
+}
+
+.table-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9pt;
+  font-weight: 600;
+  color: #000;
+}
+
+@media print {
+  body {
+    background: none;
+    padding: 0;
+  }
+  .toolbar {
+    display: none !important;
+  }
+  .page {
+    width: 100%;
+    min-height: auto;
+    padding: 0;
+    box-shadow: none;
+  }
+  .blank-field, .table-input {
+    border-bottom: 1px solid #000 !important;
+  }
+  @page {
+    size: letter portrait;
+    margin: 0.6in 0.8in;
+  }
+}
