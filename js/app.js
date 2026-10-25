@@ -1,14 +1,14 @@
 ﻿import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Configuración de tu proyecto Firebase (Asegúrate de poner tus credenciales reales aquí cuando gustes)
+// CREDENCIALES REALES DE FIREBASE
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "tu-proyecto.firebaseapp.com",
-  projectId: "tu-proyecto-id",
-  storageBucket: "tu-proyecto.appspot.com",
-  messagingSenderId: "tu-sender-id",
-  appId: "tu-app-id"
+  apiKey: "PEGA_AQUI_TU_API_KEY",
+  authDomain: "PEGA_AQUI_TU_AUTH_DOMAIN",
+  projectId: "PEGA_AQUI_TU_PROJECT_ID",
+  storageBucket: "PEGA_AQUI_TU_STORAGE_BUCKET",
+  messagingSenderId: "PEGA_AQUI_TU_MESSAGING_SENDER_ID",
+  appId: "PEGA_AQUI_TU_APP_ID"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const inputs = document.querySelectorAll("input");
   const editableElements = document.querySelectorAll("[data-editable]");
   
-  // Crear una barra flotante de control de diseño (Interlineado y Fuente)
   const toolbar = document.querySelector(".toolbar") || document.body;
   const controlPanel = document.createElement("div");
   controlPanel.innerHTML = `
@@ -36,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const fontSizeRange = document.getElementById("fontSizeRange");
   const lineHeightRange = document.getElementById("lineHeightRange");
 
-  // 1. Cargar datos y estilos desde Firestore o LocalStorage al iniciar
+  // 1. Cargar datos y estilos desde Firestore
   try {
     const docRef = doc(db, "configuraciones", docId);
     const docSnap = await getDoc(docRef);
@@ -44,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (docSnap.exists()) {
       const data = docSnap.data();
       
-      // Restaurar Inputs
       inputs.forEach(input => {
         if (input.id && data.inputs && data.inputs[input.id] !== undefined) {
           input.value = data.inputs[input.id];
@@ -52,7 +50,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
 
-      // Restaurar Textos Editables
       editableElements.forEach(el => {
         const key = el.getAttribute("data-editable");
         if (data.texts && data.texts[key] !== undefined) {
@@ -60,7 +57,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
       });
 
-      // Restaurar Estilos
       if (data.styles) {
         document.body.style.fontSize = data.styles.fontSize + "pt";
         document.body.style.lineHeight = data.styles.lineHeight;
@@ -69,7 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       }
     }
   } catch (err) {
-    console.warn("Trabajando offline, cargando desde LocalStorage:", err);
+    console.warn("Modo offline, usando LocalStorage:", err);
     inputs.forEach(input => {
       if (!input.id) return;
       const saved = localStorage.getItem(input.id);
@@ -77,7 +73,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // 2. Habilitar / Deshabilitar modo edición de textos estáticos
+  // 2. Activar Edición
   toggleEditBtn.addEventListener("click", () => {
     isEditingEnabled = !isEditingEnabled;
     editableElements.forEach(el => {
@@ -89,7 +85,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     toggleEditBtn.textContent = isEditingEnabled ? "🔒 Bloquear Edición" : "✏️ Activar Edición de Textos";
   });
 
-  // Función genérica para guardar todo en Firestore y LocalStorage
+  // Guardar en Firestore y LocalStorage
   async function saveDataToCloud() {
     const inputsData = {};
     inputs.forEach(input => { if (input.id) inputsData[input.id] = input.value; });
@@ -112,10 +108,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       updatedAt: new Date()
     };
 
-    // Guardar local
     localStorage.setItem("app_payload", JSON.stringify(payload));
 
-    // Guardar en la nube (Firestore)
     try {
       await setDoc(doc(db, "configuraciones", docId), payload);
     } catch (error) {
@@ -123,18 +117,15 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // 3. Event listeners para cambios en inputs
   inputs.forEach(input => {
     if (!input.id) return;
     input.addEventListener("input", saveDataToCloud);
   });
 
-  // Event listeners para textos editables
   editableElements.forEach(el => {
     el.addEventListener("blur", saveDataToCloud);
   });
 
-  // Event listeners para controles de diseño (Fuente e Interlineado)
   fontSizeRange.addEventListener("input", () => {
     document.body.style.fontSize = fontSizeRange.value + "pt";
     saveDataToCloud();
