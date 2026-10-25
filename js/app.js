@@ -1,17 +1,21 @@
 ﻿import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
-// CREDENCIALES REALES DE FIREBASE
+// Tus credenciales reales de Firebase
 const firebaseConfig = {
-  apiKey: "PEGA_AQUI_TU_API_KEY",
-  authDomain: "PEGA_AQUI_TU_AUTH_DOMAIN",
-  projectId: "PEGA_AQUI_TU_PROJECT_ID",
-  storageBucket: "PEGA_AQUI_TU_STORAGE_BUCKET",
-  messagingSenderId: "PEGA_AQUI_TU_MESSAGING_SENDER_ID",
-  appId: "PEGA_AQUI_TU_APP_ID"
+  apiKey: "AIzaSyBAClg0pCp32Rkf6DshicUnkpfOaSTh5wg",
+  authDomain: "inprema-c8227.firebaseapp.com",
+  projectId: "inprema-c8227",
+  storageBucket: "inprema-c8227.firebasestorage.app",
+  messagingSenderId: "1059293241147",
+  appId: "1:1059293241147:web:deaec28004e433333e211e",
+  measurementId: "G-N4QX3294HE"
 };
 
+// Inicializar Firebase, Analytics y Firestore
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const db = getFirestore(app);
 const docId = "contenido_global_formulario";
 
